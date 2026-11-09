@@ -32,12 +32,15 @@ Die Installation hat beim ersten Mal nicht geklappt, weil `winget` auf meinem La
 
 ## B) Hypervisor-Experiment
 
-### Backends in der Gruppe
+Teil B habe ich alleine gemacht, nicht in einer Gruppe. Darum habe ich nur mein eigenes Backend getestet. Die anderen Backends habe ich nur mit der Theorie eingeordnet.
 
-| Person | Betriebssystem | Backend | Vermutung | Begründung |
+### Backends
+
+| Backend | Betriebssystem | Vermutung | Begründung | Getestet |
 |---|---|---|---|---|
-| Nico | Windows 11 Pro | hcs (Hyper-V) | Typ 1 | Hyper-V ist fest in Windows eingebaut und läuft direkt auf der Hardware. Windows selber läuft eigentlich auch nur als eine Art VM darüber. |
-| _TODO_ | | | | |
+| hcs (Hyper-V) | Windows 11 Pro (mein Laptop) | Typ 1 | Hyper-V ist fest in Windows eingebaut und läuft direkt auf der Hardware. Windows selber läuft eigentlich auch nur als eine Art VM darüber. | ja |
+| virtualbox | Windows Home | Typ 2 | VirtualBox ist ein normales Programm, das man auf Windows installiert. Es läuft also auf dem Betriebssystem und nicht direkt auf der Hardware. | nein |
+| qemu | Linux / macOS | nicht eindeutig | QEMU selber läuft als Programm (eher Typ 2). Unter Linux nutzt es aber KVM, das im Kernel steckt und direkt mit der Hardware arbeitet (eher Typ 1). | nein |
 
 ### Host-Ressourcen
 
@@ -91,6 +94,8 @@ Bei mir hat Hyper-V beide Zuweisungen abgelehnt. Meine Vermutung (Typ 1) hat sic
 - **RAM:** Hyper-V reserviert den RAM einer VM beim Start fest. Er wird nicht vom Host-Betriebssystem in den Swap ausgelagert, wie das bei einem Typ-2-Hypervisor wie VirtualBox passieren kann. Windows kann nur so viel Speicher vergeben, wie RAM plus Auslagerungsdatei (Pagefile) zusammen gross sind. 72 GB war mehr, als möglich ist, darum kam der Fehler "paging file is too small". Der Fehler ist gut so: Wenn es geklappt hätte und die VM den RAM wirklich bräuchte, müsste ständig auf die Disk ausgelagert werden, und alles würde extrem langsam (Thrashing).
 
 Ein Typ-2-Hypervisor läuft als normales Programm auf dem Betriebssystem. Dort erzeugt das Host-OS mit seinem Scheduler und dem Swap die "Illusion" von mehr Ressourcen. Darum klappt Overcommitment bei Typ 2 eher. Hyper-V arbeitet direkt auf der Hardware und prüft die Grenzen beim Start der VM.
+
+Weil ich alleine gearbeitet habe, konnte ich nicht vergleichen, ob sich die Backends gleich verhalten. Meine Erwartung: Mit VirtualBox (Typ 2) würde die Zuweisung eher klappen, oder es käme nur eine Warnung. Die VM wäre dann aber unter Last sehr langsam.
 
 ## C) Erste automatisierte VM mit cloud-init
 
