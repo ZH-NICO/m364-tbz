@@ -8,7 +8,7 @@ users: # Liste der Benutzer, die beim ersten Start erstellt werden
 package_update: true # Paketliste vor der Installation aktualisieren (apt update)
 
 packages: # diese Pakete werden installiert
-  - neofetch # zeigt Systeminfos an (aus der Basis-Datei)
+  - fastfetch # zeigt Systeminfos an, Ersatz für neofetch (gibt es in Ubuntu 26.04 nicht mehr)
   - tree # zeigt Ordner als Baum an (aus der Basis-Datei)
   - htop # mein zusätzliches Paket, Taskmanager fürs Terminal
 
