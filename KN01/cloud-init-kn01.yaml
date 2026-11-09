@@ -1,0 +1,30 @@
+#cloud-config
+users: # Liste der Benutzer, die beim ersten Start erstellt werden
+  - default # Standardbenutzer ubuntu bleibt, sonst geht multipass shell nicht mehr
+  - name: nico # mein eigener Benutzer
+    sudo: ALL=(ALL) NOPASSWD:ALL # darf sudo ohne Passwort benutzen
+    shell: /bin/bash # bash als Shell
+
+package_update: true # Paketliste vor der Installation aktualisieren (apt update)
+
+packages: # diese Pakete werden installiert
+  - neofetch # zeigt Systeminfos an (aus der Basis-Datei)
+  - tree # zeigt Ordner als Baum an (aus der Basis-Datei)
+  - htop # mein zusätzliches Paket, Taskmanager fürs Terminal
+
+write_files: # Dateien, die cloud-init erstellt
+  - path: /home/ubuntu/begruessung.txt # Datei aus der Basis-Datei
+    content: | # Inhalt der Datei, | heisst mehrere Zeilen
+      Diese Datei wurde von cloud-init erstellt.
+      Niemand hat sie von Hand angelegt.
+  - path: /home/ubuntu/info-nico.txt # meine eigene Datei
+    content: | # Inhalt der Datei
+      Name: Nico Schult
+      Schule: TBZ
+      Modul: M346
+      Diese VM wurde mit cloud-init aufgesetzt.
+
+runcmd: # Befehle, die am Schluss vom ersten Start ausgeführt werden
+  - echo "Installation abgeschlossen am $(date)" >> /home/ubuntu/begruessung.txt # Datum an die Datei anhängen
+  - mkdir -p /home/nico/projekte # mein eigener Befehl: Ordner projekte erstellen
+  - chown nico:nico /home/nico/projekte # Ordner gehört nico und nicht root

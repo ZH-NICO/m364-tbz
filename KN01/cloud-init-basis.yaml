@@ -1,0 +1,15 @@
+#cloud-config
+package_update: true
+
+packages:
+  - neofetch
+  - tree
+
+write_files:
+  - path: /home/ubuntu/begruessung.txt
+    content: |
+      Diese Datei wurde von cloud-init erstellt.
+      Niemand hat sie von Hand angelegt.
+
+runcmd:
+  - echo "Installation abgeschlossen am $(date)" >> /home/ubuntu/begruessung.txt
