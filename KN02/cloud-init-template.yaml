@@ -6,7 +6,7 @@ users: # Liste der Benutzer, die beim ersten Start erstellt werden
     shell: /bin/bash # bash als Shell
     ssh_authorized_keys: # diese öffentlichen Schlüssel dürfen sich als nico einloggen
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7veRsbI0CfweR4UJJ4ySqLtd9DC0C4DFJjd2xmeGR8bOYffjwmCW47uVb0QWrKHRtUchhWUx1Lcynd+jKdzlhQCs6uqS/+5qNt7mcLYSjYZ5Ke6Zc+ZhGlnTfzw8Q9TRPZzZ8yxLFMP0g535Atji8nCIlWnX0K3aALY6gljDPSHkMRtecobVipcsl6Rcg6SqGxivF6+69m09194vvww2hz7qVbX55z/35ZDJK+N9yuDGdv3E6jYIaq9+OnGk8UHIlYO790v5rEKJ46JAq0lFI9h/sm0EN4HgI1bdWty0/BS1CwAU8Koi3wEyiBSeIFCzCfR0GQFWYEuu8tSsB2dE9 nico1 # mein Public Key (nico1)
-      - ssh-rsa KEY_DER_LEHRPERSON_HIER_EINSETZEN lehrperson # Public Key der Lehrperson, damit sie auf meine Instanzen zugreifen kann
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFoD9CeG7EebhVT6XhzQExfS91f059/rUUSvnktx/FU3 vanEssen # Public Key meiner Lehrperson (Jonas van Essen), damit sie auf meine Instanzen zugreifen kann
 
 ssh_pwauth: false # Login mit Passwort per SSH verbieten, nur noch mit Schlüssel
 disable_root: true # direkter SSH-Login als root ist gesperrt

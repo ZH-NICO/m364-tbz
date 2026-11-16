@@ -99,7 +99,7 @@ Das cloud-init-Log liegt am gleichen Ort wie in KN01 (`/var/log/cloud-init-outpu
 
 Datei: [cloud-init-template.yaml](cloud-init-template.yaml)
 
-Das ist ab jetzt meine Vorlage für alle nächsten KNs. Darin sind zwei öffentliche Schlüssel: meiner (`nico1`) und der von meiner Lehrperson.
+Das ist ab jetzt meine Vorlage für alle nächsten KNs. Darin sind zwei öffentliche Schlüssel: meiner (`nico1`) und der von meiner Lehrperson Jonas van Essen (`vanEssen.pub` aus dem Modul-Repo).
 
 Die drei zusätzlichen Einstellungen:
 
