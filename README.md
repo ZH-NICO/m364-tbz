@@ -5,7 +5,7 @@ Abgaben von Nico Schult für das Modul 346.
 | KN | Thema |
 |---|---|
 | [KN01](KN01/README.md) | Virtualisierung & erste automatisierte VM |
-| [KN02](KN02/README.md) | |
+| [KN02](KN02/README.md) | Cloud-Onboarding & SSH |
 | [KN03](KN03/README.md) | |
 | [KN04](KN04/README.md) | |
 | [KN05](KN05/README.md) | |
